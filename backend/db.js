@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const { cleanEnvValue } = require("./utils/env");
 let hasConnectedOnce = false;
 
+mongoose.set("bufferCommands", false);
+
 const connectDb = async () => {
   const mongoUri = cleanEnvValue(process.env.MONGODB_URI || "");
 
@@ -22,4 +24,6 @@ const getDbStatus = () => ({
   hasConnectedOnce,
 });
 
-module.exports = { connectDb, getDbStatus };
+const isDbConnected = () => mongoose.connection.readyState === 1;
+
+module.exports = { connectDb, getDbStatus, isDbConnected };

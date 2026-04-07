@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const { requireAuth } = require("../middleware/auth");
+const { requireDbReady } = require("../middleware/dbReady");
 const { getJwtSecret } = require("../utils/env");
 
 const router = express.Router();
@@ -20,7 +21,7 @@ const createToken = (userId) => {
   });
 };
 
-router.post("/signup", async (req, res) => {
+router.post("/signup", requireDbReady, async (req, res) => {
   try {
     const { name = "", email = "", password = "" } = req.body || {};
 
@@ -57,7 +58,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", requireDbReady, async (req, res) => {
   try {
     const { email = "", password = "" } = req.body || {};
     const normalizedEmail = email.trim().toLowerCase();
@@ -80,7 +81,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/me", requireAuth, async (req, res) => {
+router.get("/me", requireDbReady, requireAuth, async (req, res) => {
   res.json({ user: sanitizeUser(req.user) });
 });
 

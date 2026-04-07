@@ -1,10 +1,11 @@
 const express = require("express");
 const Readme = require("../models/Readme");
 const { requireAuth } = require("../middleware/auth");
+const { requireDbReady } = require("../middleware/dbReady");
 
 const router = express.Router();
 
-router.get("/", requireAuth, async (req, res) => {
+router.get("/", requireDbReady, requireAuth, async (req, res) => {
   try {
     const readmes = await Readme.find({ user: req.user._id })
       .sort({ updatedAt: -1 })
@@ -27,7 +28,7 @@ router.get("/", requireAuth, async (req, res) => {
   }
 });
 
-router.post("/", requireAuth, async (req, res) => {
+router.post("/", requireDbReady, requireAuth, async (req, res) => {
   try {
     const { title = "", sourceType = "folder", sourceLabel = "", content = "" } = req.body || {};
 
@@ -64,7 +65,7 @@ router.post("/", requireAuth, async (req, res) => {
   }
 });
 
-router.patch("/:id", requireAuth, async (req, res) => {
+router.patch("/:id", requireDbReady, requireAuth, async (req, res) => {
   try {
     const { title = "", content = "" } = req.body || {};
 
