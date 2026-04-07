@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const { requireAuth } = require("../middleware/auth");
+const { getJwtSecret } = require("../utils/env");
 
 const router = express.Router();
 
@@ -14,12 +15,7 @@ const sanitizeUser = (user) => ({
 });
 
 const createToken = (userId) => {
-  const jwtSecret = process.env.JWT_SECRET;
-  if (!jwtSecret) {
-    throw new Error("JWT_SECRET is missing. Add it to backend/.env before starting the server.");
-  }
-
-  return jwt.sign({ userId }, jwtSecret, {
+  return jwt.sign({ userId }, getJwtSecret(), {
     expiresIn: process.env.JWT_EXPIRES_IN || "7d",
   });
 };
@@ -57,7 +53,7 @@ router.post("/signup", async (req, res) => {
     res.status(201).json({ token, user: sanitizeUser(user) });
   } catch (error) {
     console.error("Signup failed:", error);
-    res.status(500).json({ error: "Could not create the account." });
+    res.status(500).json({ error: error.message || "Could not create the account." });
   }
 });
 
@@ -80,7 +76,7 @@ router.post("/login", async (req, res) => {
     res.json({ token, user: sanitizeUser(user) });
   } catch (error) {
     console.error("Login failed:", error);
-    res.status(500).json({ error: "Could not log in." });
+    res.status(500).json({ error: error.message || "Could not log in." });
   }
 });
 

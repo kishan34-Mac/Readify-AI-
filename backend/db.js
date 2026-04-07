@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-
-const cleanEnvValue = (value = "") => value.trim().replace(/^['"]|['"]$/g, "");
+const { cleanEnvValue } = require("./utils/env");
 let hasConnectedOnce = false;
 
 const connectDb = async () => {

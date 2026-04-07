@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const { getJwtSecret } = require("../utils/env");
 
 const getTokenFromHeader = (authHeader = "") => {
   if (!authHeader.startsWith("Bearer ")) {
@@ -14,12 +15,7 @@ const loadUserFromToken = async (token) => {
     return null;
   }
 
-  const jwtSecret = process.env.JWT_SECRET;
-  if (!jwtSecret) {
-    throw new Error("JWT_SECRET is missing. Add it to backend/.env before starting the server.");
-  }
-
-  const decoded = jwt.verify(token, jwtSecret);
+  const decoded = jwt.verify(token, getJwtSecret());
   const user = await User.findById(decoded.userId).select("_id name email createdAt");
   return user || null;
 };
