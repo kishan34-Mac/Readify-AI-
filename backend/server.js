@@ -15,6 +15,11 @@ const configuredOrigins = (process.env.CLIENT_ORIGIN || "http://localhost:8080")
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
+const allowedOriginPatterns = [
+  /^https:\/\/.*\.vercel\.app$/,
+  /^http:\/\/localhost:\d+$/,
+  /^http:\/\/127\.0\.0\.1:\d+$/,
+];
 const allowedOrigins = new Set([
   ...configuredOrigins,
   "http://localhost:8080",
@@ -25,12 +30,17 @@ const allowedOrigins = new Set([
  
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.has(origin)) {
+    const matchesPattern =
+      typeof origin === "string" &&
+      allowedOriginPatterns.some((pattern) => pattern.test(origin));
+
+    if (!origin || allowedOrigins.has(origin) || matchesPattern) {
       return callback(null, true);
     }
 
     return callback(new Error(`CORS blocked for origin: ${origin}`));
-  },
+  }, 
+  credentials: true,
 }));
 app.use(express.json()); // Parses incoming JSON requests
 
