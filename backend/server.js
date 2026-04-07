@@ -2,7 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const { connectDb } = require('./db');
+const { connectDb, getDbStatus } = require('./db');
 
 // Import your routes
 const generateReadmeRoute = require('./routes/generateReadme');
@@ -35,21 +35,30 @@ app.use(cors({
 app.use(express.json()); // Parses incoming JSON requests
 
 app.get('/api/health', (_req, res) => {
-  res.json({ ok: true });
+  const dbStatus = getDbStatus();
+  res.json({
+    ok: true,
+    database: {
+      readyState: dbStatus.readyState,
+      hasConnectedOnce: dbStatus.hasConnectedOnce,
+    },
+  });
 });
 
 app.use('/api', generateReadmeRoute);
 app.use('/api/auth', authRoute);
 app.use('/api/readmes', readmeRoute);
 
-(async () => {
+const startDbConnectionLoop = async () => {
   try {
     await connectDb();
-    app.listen(PORT, () => {
-      console.log(`Server is successfully running on http://localhost:${PORT}`);
-    });
   } catch (error) {
-    console.error('Server failed to start:', error);
-    process.exit(1);
+    console.error('Initial MongoDB connection failed. Retrying in 10 seconds.', error);
+    setTimeout(startDbConnectionLoop, 10000);
   }
-})();
+};
+
+app.listen(PORT, () => {
+  console.log(`Server is successfully running on http://localhost:${PORT}`);
+  startDbConnectionLoop();
+});

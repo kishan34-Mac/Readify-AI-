@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const cleanEnvValue = (value = "") => value.trim().replace(/^['"]|['"]$/g, "");
+let hasConnectedOnce = false;
 
 const connectDb = async () => {
   const mongoUri = cleanEnvValue(process.env.MONGODB_URI || "");
@@ -13,7 +14,13 @@ const connectDb = async () => {
     dbName: process.env.MONGODB_DB_NAME || undefined,
   });
 
+  hasConnectedOnce = true;
   console.log("MongoDB connected");
 };
 
-module.exports = { connectDb };
+const getDbStatus = () => ({
+  readyState: mongoose.connection.readyState,
+  hasConnectedOnce,
+});
+
+module.exports = { connectDb, getDbStatus };

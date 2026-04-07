@@ -109,7 +109,8 @@ Returns the authenticated user's saved README library.
 
 ### Frontend on Vercel
 
-- Import the `frontend` directory as the Vercel project root.
+- You can either import the `frontend` directory as the Vercel project root or deploy from the repository root.
+- The root-level [vercel.json](/Users/kishan/Desktop/readify-ai-pro-main/vercel.json) now supports repo-root deployment.
 - Set `VITE_API_BASE_URL` to your Render backend URL.
 - The included [frontend/vercel.json](/Users/kishan/Desktop/readify-ai-pro-main/frontend/vercel.json) handles SPA route rewrites.
 
@@ -131,6 +132,7 @@ Returns the authenticated user's saved README library.
 - Do not commit `backend/.env` or `frontend/.env`.
 - Set `CLIENT_ORIGIN` to your Vercel domain, for example `https://your-app.vercel.app`.
 - Set `VITE_API_BASE_URL` to your Render backend URL, for example `https://your-api.onrender.com`.
+- The backend now starts first and keeps retrying MongoDB in the background, which helps Render avoid crash loops during transient DB startup issues.
 
 ## Notes
 

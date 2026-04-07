@@ -1,0 +1,10 @@
+{
+  "name": "readify-ai-monorepo",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm run build"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}
