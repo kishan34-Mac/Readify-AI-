@@ -1,150 +1,157 @@
-# Readify AI Pro
+# 🏏 SFMD
 
-Readify AI Pro is a full-stack app that lets you upload a project folder and generate a polished `README.md` using Gemini.
+A dynamic and visually engaging web portfolio or tribute site, likely dedicated to a cricketer, showcasing their biography, achievements, statistics, and a rich media gallery. Built with a modern frontend stack, SFMD offers an interactive experience to explore a player's career and impact.
 
-## Project Structure
+[![Primary Language: TypeScript](https://img.shields.io/badge/Primary_Language-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Built With: React](https://img.shields.io/badge/Built_With-React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Styled With: Tailwind CSS](https://img.shields.io/badge/Styled_With-Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Package Manager: Bun](https://img.shields.io/badge/Package_Manager-Bun-FBF0E4?style=for-the-badge&logo=bun&logoColor=black)](https://bun.sh/)
+[![Test Runner: Vitest](https://img.shields.io/badge/Test_Runner-Vitest-6E9549?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![E2E Testing: Playwright](https://img.shields.io/badge/E2E_Testing-Playwright-2EAD5C?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
 
-```text
-readify-ai-pro-main/
-├── backend/   # Express API for upload parsing and Gemini README generation
-└── frontend/  # React + Vite dashboard UI
+---
+
+## 📝 Table of Contents
+
+*   [✨ Overview](#-overview)
+*   [🚀 Features](#-features)
+*   [🛠️ Tech Stack](#%EF%B8%8F-tech-stack)
+*   [📁 Project Structure](#-project-structure)
+*   [⚙️ Installation](#%EF%B8%8F-installation)
+*   [💡 Usage](#-usage)
+*   [👋 Notes](#-notes)
+
+---
+
+## ✨ Overview
+
+SFMD (Samad's Fictional/Football/Fantastic/Fastest/Finest/etc. Moments/Dreams/Days/Dedications) is a modern, responsive single-page application crafted to present a compelling narrative, likely for a sports personality—specifically, a cricketer, given the wealth of cricket-related imagery. The site effectively uses interactive components and a clean UI to highlight key career aspects, personal journey, and visual media. It provides a rich browsing experience for fans and followers.
+
+*(Note: The full project name "SFMD" is inferred; the project's content heavily suggests a personal portfolio or tribute site.)*
+
+---
+
+## 🚀 Features
+
+Based on the visible file structure and components, SFMD appears to offer the following features:
+
+*   **Hero Section**: An engaging introductory section with prominent imagery (`HeroSection`).
+*   **About Section**: Detailed information about the subject (`AboutSection`).
+*   **Biography Section**: A dedicated area for a personal biography or life story (`BiographySection`).
+*   **Achievements Section**: Highlights key milestones and successes (`AchievementsSection`).
+*   **Stats Section**: Displays career statistics and metrics, possibly with animated counters (`StatsSection`, `AnimatedCounter`).
+*   **Gallery Section**: A rich collection of images and media, likely utilizing carousels for display (`GallerySection`, `carousel` component).
+*   **Blog Section**: Features blog posts or articles related to the subject (`BlogSection`).
+*   **Contact Section**: Provides means for interaction or reaching out (`ContactSection`).
+*   **Responsive Navigation**: A sticky and responsive navbar for seamless navigation across devices (`Navbar`, `NavLink`).
+*   **Loading Animations**: Smooth transitions or loading indicators for enhanced user experience (`LoadingAnimation`).
+*   **Modern UI Components**: Utilizes a comprehensive set of accessible and customizable UI components (`src/components/ui/` including `button`, `card`, `dialog`, `accordion`, `pagination`, etc.).
+*   **Scroll Reveal Effects**: Dynamic elements that animate into view as the user scrolls (`useScrollReveal`).
+
+---
+
+## 🛠️ Tech Stack
+
+SFMD is built with a robust and modern set of technologies for a high-performance and maintainable web application:
+
+*   **Frontend Framework**: [React](https://react.dev/) – For building interactive user interfaces.
+*   **Language**: [TypeScript](https://www.typescriptlang.org/) – Provides type safety and enhances code quality.
+*   **Build Tool**: [Vite](https://vitejs.dev/) – A fast and efficient build tool for modern web projects.
+*   **Styling**: [Tailwind CSS](https://tailwindcss.com/) – A utility-first CSS framework for rapid UI development.
+*   **UI Library**: [Shadcn/ui](https://ui.shadcn.com/) – A collection of reusable components built with Radix UI and Tailwind CSS.
+*   **Package Manager**: [Bun](https://bun.sh/) – A fast, all-in-one JavaScript runtime and toolkit.
+*   **Unit Testing**: [Vitest](https://vitest.dev/) – A fast unit test framework powered by Vite.
+*   **End-to-End Testing**: [Playwright](https://playwright.dev/) – For robust browser automation and E2E testing.
+*   **Linting**: [ESLint](https://eslint.org/) – For maintaining code consistency and quality.
+*   **Code Formatting**: [PostCSS](https://postcss.org/) – For transforming CSS with JavaScript plugins.
+
+---
+
+## 📁 Project Structure
+
+The repository is organized into a logical structure to promote maintainability and clarity:
+
+```
+SFMD/
+├── public/                 # Public assets (e.g., index.html)
+├── src/                    # Source code for the application
+│   ├── assets/             # Images and other static media files (e.g., cricket-related images, portraits)
+│   ├── components/         # Reusable React components
+│   │   ├── ui/             # Shadcn/ui components (e.g., button, card, dialog)
+│   │   └── (core components) # Application-specific components (e.g., HeroSection, Navbar)
+│   ├── hooks/              # Custom React hooks (e.g., useScrollReveal)
+│   ├── lib/                # Utility functions
+│   ├── pages/              # Top-level page components (e.g., Index.tsx, NotFound.tsx)
+│   ├── test/               # Test files for Vitest
+│   ├── App.css             # Main application CSS
+│   ├── App.tsx             # Main application component
+│   ├── index.css           # Global CSS styles
+│   ├── main.tsx            # Entry point of the React application
+│   └── vite-env.d.ts       # Vite environment type definitions
+├── bun.lockb               # Bun lockfile
+├── components.json         # Shadcn/ui configuration
+├── eslint.config.js        # ESLint configuration
+├── package.json            # Project dependencies and scripts
+├── playwright.config.ts    # Playwright E2E testing configuration
+├── postcss.config.js       # PostCSS configuration
+├── tailwind.config.ts      # Tailwind CSS configuration
+├── tsconfig.json           # TypeScript configuration
+├── vite.config.ts          # Vite build configuration
+└── vitest.config.ts        # Vitest testing configuration
 ```
 
-## Features
+---
 
-- Upload a local project folder from the browser
-- Paste a public GitHub repository URL and generate a README from GitHub metadata
-- Paste a GitHub username and generate a profile-style README with repos missing README files called out
-- Ignore noisy folders like `node_modules` and `.git`
-- Preserve uploaded folder paths so the README can be inferred from real project structure
-- Generate a README with Gemini using your `GEMINI_API_KEY`
-- Review, edit, copy, and download the generated `README.md`
-- Sign up and log in with MongoDB-backed account storage
-- Persist generated README files to a personal saved library for future editing
+## ⚙️ Installation
 
-## Tech Stack
+To set up SFMD locally, follow these steps:
 
-- Frontend: React, TypeScript, Vite, Tailwind CSS, shadcn/ui
-- Backend: Node.js, Express, Multer, `@google/generative-ai`
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/anshumeshsaini/SFMD.git
+    cd SFMD
+    ```
 
-## Setup
+2.  **Install dependencies:**
+    This project uses `bun` as the package manager. If you don't have Bun installed, you can find instructions on their [official website](https://bun.sh/docs/installation).
+    ```bash
+    bun install
+    ```
 
-### 1. Install dependencies
+---
 
-```bash
-cd /Users/kishan/Desktop/readify-ai-pro-main/backend && npm install
-cd /Users/kishan/Desktop/readify-ai-pro-main/frontend && npm install
-```
+## 💡 Usage
 
-### 2. Configure environment variables
+Once the dependencies are installed, you can run the development server or build the project:
 
-Create `backend/.env`:
+1.  **Run the development server:**
+    This will start a local development server, typically accessible at `http://localhost:5173`.
+    ```bash
+    bun dev
+    ```
 
-```env
-PORT=5001
-CLIENT_ORIGIN=http://localhost:8080
-GEMINI_API_KEY=your_gemini_api_key_here
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=generate_a_long_random_secret
-JWT_EXPIRES_IN=7d
-```
+2.  **Build the project for production:**
+    This will compile the project into static files in the `dist` directory, ready for deployment.
+    ```bash
+    bun run build
+    ```
 
-Optional: create `frontend/.env` if your backend runs on a different URL:
+3.  **Run tests:**
+    Execute the unit tests using Vitest.
+    ```bash
+    bun test
+    ```
 
-```env
-VITE_API_BASE_URL=https://your-render-backend.onrender.com
-```
+4.  **Run E2E tests (Playwright):**
+    First, ensure you have built the project or are running the dev server, then run Playwright tests.
+    ```bash
+    bun run test-e2e
+    ```
 
-## Run the App
+---
 
-Start the backend:
+## 👋 Notes
 
-```bash
-cd /Users/kishan/Desktop/readify-ai-pro-main/backend
-npm run dev
-```
-
-Start the frontend:
-
-```bash
-cd /Users/kishan/Desktop/readify-ai-pro-main/frontend
-npm run dev
-```
-
-Open the frontend URL shown by Vite, usually `http://localhost:8080`.
-
-## How to Use
-
-1. Open the Upload page.
-2. Select a project folder from your computer.
-3. Click `Generate README`.
-4. Review the generated Markdown in the editor.
-5. Copy or download the final `README.md`.
-
-## API
-
-### `POST /api/generate`
-
-Accepts uploaded files under the `projectFiles` form-data field and returns:
-
-```json
-{
-  "readme": "# Your generated README..."
-}
-```
-
-### `POST /api/auth/signup`
-
-Creates a user account and returns a JWT plus the user profile.
-
-### `POST /api/auth/login`
-
-Logs in an existing user and returns a JWT plus the user profile.
-
-### `GET /api/readmes`
-
-Returns the authenticated user's saved README library.
-
-## Deployment
-
-### Frontend on Vercel
-
-- You can either import the `frontend` directory as the Vercel project root or deploy from the repository root.
-- The root-level [vercel.json](/Users/kishan/Desktop/readify-ai-pro-main/vercel.json) now supports repo-root deployment.
-- Set `VITE_API_BASE_URL` to your Render backend URL.
-- The included [frontend/vercel.json](/Users/kishan/Desktop/readify-ai-pro-main/frontend/vercel.json) handles SPA route rewrites.
-
-### Backend on Render
-
-- Create a new Render Web Service using the `backend` directory.
-- Use `npm install` as the build command and `npm start` as the start command.
-- Or use the included [render.yaml](/Users/kishan/Desktop/readify-ai-pro-main/render.yaml) for Blueprint deployment.
-- Set these environment variables in Render:
-  `CLIENT_ORIGIN`
-  `GEMINI_API_KEY`
-  `GITHUB_TOKEN` (optional)
-  `MONGODB_URI`
-  `JWT_SECRET`
-  `JWT_EXPIRES_IN`
-
-### Production Notes
-
-- Do not commit `backend/.env` or `frontend/.env`.
-- Set `CLIENT_ORIGIN` to your Vercel domain, for example `https://your-app.vercel.app`.
-- Set `VITE_API_BASE_URL` to your Render backend URL, for example `https://your-api.onrender.com`.
-- The backend now starts first and keeps retrying MongoDB in the background, which helps Render avoid crash loops during transient DB startup issues.
-
-## Notes
-
-- The generated README is inferred mostly from the uploaded file structure, not full source-code analysis.
-- A valid Gemini API key must be present in `backend/.env`.
-- If the frontend cannot reach the backend, confirm `CLIENT_ORIGIN`, `PORT`, and `VITE_API_BASE_URL`.
-
-## Validation
-
-Verified locally:
-
-- Frontend build: `npm run build`
-- Frontend tests: `npm test`
-- Frontend lint: `npm run lint` passes when run on its own
-- Backend controller loads successfully with the Gemini integration
+*   This project is inferred to be a personal portfolio or tribute site, primarily based on the asset names and component structure.
+*   The `SFMD` acronym's full meaning is not explicitly provided in the repository metadata but is consistent with a personal project.
+*   The `src/components/ui` directory suggests the use of [shadcn/ui](https://ui.shadcn.com/) for its comprehensive set of customizable and accessible UI components.
