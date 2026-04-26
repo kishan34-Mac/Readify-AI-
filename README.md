@@ -1,157 +1,173 @@
-# 🏏 SFMD
+# 🛍️ ChicBoutique: Full-Stack Fashion E-commerce Platform
 
-A dynamic and visually engaging web portfolio or tribute site, likely dedicated to a cricketer, showcasing their biography, achievements, statistics, and a rich media gallery. Built with a modern frontend stack, SFMD offers an interactive experience to explore a player's career and impact.
+Welcome to **ChicBoutique**, a comprehensive full-stack e-commerce platform designed for fashion retailers. This project offers a seamless shopping experience for customers and a powerful administration panel for efficient business management. From trendy apparel browsing to secure order processing and detailed analytics, ChicBoutique provides all the tools needed to run a modern online fashion store.
 
-[![Primary Language: TypeScript](https://img.shields.io/badge/Primary_Language-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Built With: React](https://img.shields.io/badge/Built_With-React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![Styled With: Tailwind CSS](https://img.shields.io/badge/Styled_With-Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Package Manager: Bun](https://img.shields.io/badge/Package_Manager-Bun-FBF0E4?style=for-the-badge&logo=bun&logoColor=black)](https://bun.sh/)
-[![Test Runner: Vitest](https://img.shields.io/badge/Test_Runner-Vitest-6E9549?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
-[![E2E Testing: Playwright](https://img.shields.io/badge/E2E_Testing-Playwright-2EAD5C?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
+## ✨ Highlights & Features
 
----
+ChicBoutique is packed with functionalities to create a dynamic e-commerce environment:
 
-## 📝 Table of Contents
+*   **👗 Product Catalog Management**: Effortlessly add, update, and categorize a wide range of fashion products, complete with rich media (images, videos).
+*   **🛒 Intuitive Shopping Cart**: A robust cart system allowing users to add, remove, and manage items before checkout.
+*   **💳 Secure Checkout & Payments**: Streamlined checkout flow with integrated payment processing capabilities.
+*   **📦 Order Tracking & History**: Customers can track their orders in real-time and view their complete purchase history.
+*   **👤 User Authentication & Profiles**: Secure sign-up, login, and comprehensive user profiles for personalized experiences.
+*   **👩‍💻 Admin Dashboard**: A dedicated interface for administrators to manage products, orders, customers, coupons, and monitor sales analytics.
+*   **📈 Sales Analytics & Reporting**: Visual dashboards (`BarChartBox.jsx`, `LineChartBox.jsx`) to monitor key performance indicators (KPIs) like sales, revenue, and inventory.
+*   **💰 Coupon & Discount System**: Create and manage promotional coupons to attract and retain customers.
+*   **💬 Customer Support**: Features to manage customer inquiries and support requests.
+*   **🔒 Role-Based Access Control**: Differentiate between customer and administrator access with protected routes.
+*   **🖼️ Cloudinary Integration**: Efficient image and media storage and delivery for product visuals.
+*   **📧 Email Notifications**: Automated emails for order confirmations, shipping updates, and more (`authEmail.js`).
+*   **📱 Responsive Design**: Built with React and Tailwind CSS for a modern and adaptable user interface.
 
-*   [✨ Overview](#-overview)
-*   [🚀 Features](#-features)
-*   [🛠️ Tech Stack](#%EF%B8%8F-tech-stack)
-*   [📁 Project Structure](#-project-structure)
-*   [⚙️ Installation](#%EF%B8%8F-installation)
-*   [💡 Usage](#-usage)
-*   [👋 Notes](#-notes)
+## ⚙️ Tech Stack
 
----
+ChicBoutique leverages a modern technology stack to deliver a robust and scalable application:
 
-## ✨ Overview
+*   **Frontend**:
+    *   **React.js**: A powerful JavaScript library for building user interfaces.
+    *   **Vite**: A fast build tool for modern web projects.
+    *   **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+    *   **Axios**: For making HTTP requests to the backend API.
+    *   **Zustand**: (Inferred from `authStore.js`, `cartStore.js`, `orderStore.js`, `productStore.js`, `profileStore.js`) A small, fast, and scalable state-management solution.
+*   **Backend**:
+    *   **Node.js**: A JavaScript runtime for server-side logic.
+    *   **Express.js**: A fast, unopinionated, minimalist web framework for Node.js.
+    *   **MongoDB**: A NoSQL document database for flexible data storage.
+    *   **Mongoose**: An ODM (Object Data Modeling) library for MongoDB and Node.js.
+    *   **JSON Web Tokens (JWT)**: For secure user authentication and authorization.
+    *   **Bcrypt.js**: For hashing passwords securely.
+    *   **Cloudinary**: For cloud-based image and video management.
+    *   **Nodemailer**: (Inferred from `authEmail.js`) For sending emails.
 
-SFMD (Samad's Fictional/Football/Fantastic/Fastest/Finest/etc. Moments/Dreams/Days/Dedications) is a modern, responsive single-page application crafted to present a compelling narrative, likely for a sports personality—specifically, a cricketer, given the wealth of cricket-related imagery. The site effectively uses interactive components and a clean UI to highlight key career aspects, personal journey, and visual media. It provides a rich browsing experience for fans and followers.
+## 📂 Project Structure
 
-*(Note: The full project name "SFMD" is inferred; the project's content heavily suggests a personal portfolio or tribute site.)*
-
----
-
-## 🚀 Features
-
-Based on the visible file structure and components, SFMD appears to offer the following features:
-
-*   **Hero Section**: An engaging introductory section with prominent imagery (`HeroSection`).
-*   **About Section**: Detailed information about the subject (`AboutSection`).
-*   **Biography Section**: A dedicated area for a personal biography or life story (`BiographySection`).
-*   **Achievements Section**: Highlights key milestones and successes (`AchievementsSection`).
-*   **Stats Section**: Displays career statistics and metrics, possibly with animated counters (`StatsSection`, `AnimatedCounter`).
-*   **Gallery Section**: A rich collection of images and media, likely utilizing carousels for display (`GallerySection`, `carousel` component).
-*   **Blog Section**: Features blog posts or articles related to the subject (`BlogSection`).
-*   **Contact Section**: Provides means for interaction or reaching out (`ContactSection`).
-*   **Responsive Navigation**: A sticky and responsive navbar for seamless navigation across devices (`Navbar`, `NavLink`).
-*   **Loading Animations**: Smooth transitions or loading indicators for enhanced user experience (`LoadingAnimation`).
-*   **Modern UI Components**: Utilizes a comprehensive set of accessible and customizable UI components (`src/components/ui/` including `button`, `card`, `dialog`, `accordion`, `pagination`, etc.).
-*   **Scroll Reveal Effects**: Dynamic elements that animate into view as the user scrolls (`useScrollReveal`).
-
----
-
-## 🛠️ Tech Stack
-
-SFMD is built with a robust and modern set of technologies for a high-performance and maintainable web application:
-
-*   **Frontend Framework**: [React](https://react.dev/) – For building interactive user interfaces.
-*   **Language**: [TypeScript](https://www.typescriptlang.org/) – Provides type safety and enhances code quality.
-*   **Build Tool**: [Vite](https://vitejs.dev/) – A fast and efficient build tool for modern web projects.
-*   **Styling**: [Tailwind CSS](https://tailwindcss.com/) – A utility-first CSS framework for rapid UI development.
-*   **UI Library**: [Shadcn/ui](https://ui.shadcn.com/) – A collection of reusable components built with Radix UI and Tailwind CSS.
-*   **Package Manager**: [Bun](https://bun.sh/) – A fast, all-in-one JavaScript runtime and toolkit.
-*   **Unit Testing**: [Vitest](https://vitest.dev/) – A fast unit test framework powered by Vite.
-*   **End-to-End Testing**: [Playwright](https://playwright.dev/) – For robust browser automation and E2E testing.
-*   **Linting**: [ESLint](https://eslint.org/) – For maintaining code consistency and quality.
-*   **Code Formatting**: [PostCSS](https://postcss.org/) – For transforming CSS with JavaScript plugins.
-
----
-
-## 📁 Project Structure
-
-The repository is organized into a logical structure to promote maintainability and clarity:
+The project is organized into distinct frontend and backend directories, along with shared assets and configurations.
 
 ```
-SFMD/
-├── public/                 # Public assets (e.g., index.html)
-├── src/                    # Source code for the application
-│   ├── assets/             # Images and other static media files (e.g., cricket-related images, portraits)
-│   ├── components/         # Reusable React components
-│   │   ├── ui/             # Shadcn/ui components (e.g., button, card, dialog)
-│   │   └── (core components) # Application-specific components (e.g., HeroSection, Navbar)
-│   ├── hooks/              # Custom React hooks (e.g., useScrollReveal)
-│   ├── lib/                # Utility functions
-│   ├── pages/              # Top-level page components (e.g., Index.tsx, NotFound.tsx)
-│   ├── test/               # Test files for Vitest
-│   ├── App.css             # Main application CSS
-│   ├── App.tsx             # Main application component
-│   ├── index.css           # Global CSS styles
-│   ├── main.tsx            # Entry point of the React application
-│   └── vite-env.d.ts       # Vite environment type definitions
-├── bun.lockb               # Bun lockfile
-├── components.json         # Shadcn/ui configuration
-├── eslint.config.js        # ESLint configuration
+.
+├── public/                 # Static assets like favicon, logo
+├── src/
+│   ├── api/                # Axios instance for API calls
+│   ├── assets/             # Images, videos, other media
+│   ├── auth/               # Authentication related files (store, controller, model, route, validator)
+│   ├── components/         # Reusable UI components (Footer, Header, Navbar, Sidebar, StatsCard, etc.)
+│   ├── config/             # Database, Cloudinary, Category configurations
+│   ├── controllers/        # Backend logic for various modules (auth, cart, order, product, payment, profile)
+│   ├── models/             # Mongoose schemas for database collections (auth, cart, category, coupon, order, product, profile, review, securityKey, subCategory)
+│   ├── middleware/         # Express middleware for authentication, roles, uploads, validation
+│   ├── pages/              # Frontend pages (Home, Dashboard, Productdetailpage, Cartpage, Checkoutpage, etc.)
+│   ├── routes/             # Backend API routes
+│   ├── store/              # Zustand stores for global state management
+│   ├── styles/             # Global CSS files
+│   ├── utils/              # Utility functions (jwt, bcrypt, apiError, apiResponse, exportCsv, generateInvoice, chartColors, userCookies, etc.)
+│   └── App.jsx             # Main React application component
+├── .env.example            # Example environment variables
 ├── package.json            # Project dependencies and scripts
-├── playwright.config.ts    # Playwright E2E testing configuration
-├── postcss.config.js       # PostCSS configuration
-├── tailwind.config.ts      # Tailwind CSS configuration
-├── tsconfig.json           # TypeScript configuration
-├── vite.config.ts          # Vite build configuration
-└── vitest.config.ts        # Vitest testing configuration
+├── app.js                  # Main backend server entry point
+├── main.jsx                # Main frontend entry point
+└── tailwind.config.js      # Tailwind CSS configuration
+└── vite.config.js          # Vite configuration
+└── ...                     # Other configuration files (.postcss.config.js, .eslint.config.js, bervo.config.js)
 ```
+*Note: This structure is inferred from the file listing and common project conventions.*
 
----
+## 🚀 Installation
 
-## ⚙️ Installation
-
-To set up SFMD locally, follow these steps:
+To get ChicBoutique up and running on your local machine, follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/anshumeshsaini/SFMD.git
-    cd SFMD
+    git clone <repository-url>
+    cd <project-directory>
     ```
 
-2.  **Install dependencies:**
-    This project uses `bun` as the package manager. If you don't have Bun installed, you can find instructions on their [official website](https://bun.sh/docs/installation).
+2.  **Install Frontend Dependencies:**
+    Navigate to the project root (where `package.json` is located) and install:
     ```bash
-    bun install
+    npm install
+    # or
+    yarn install
     ```
 
----
+3.  **Install Backend Dependencies:**
+    The backend dependencies are typically managed within the same `package.json` for a monorepo-style setup, so the previous `npm install` should cover it.
 
-## 💡 Usage
+## 🛠️ Usage
 
-Once the dependencies are installed, you can run the development server or build the project:
+### ⚙️ Environment Variables
 
-1.  **Run the development server:**
-    This will start a local development server, typically accessible at `http://localhost:5173`.
+Create a `.env` file in the root directory of the project based on `.env.example`.
+You'll need to fill in the following:
+
+```env
+PORT=8000
+MONGO_URI="your_mongodb_connection_string"
+JWT_SECRET="a_very_secret_string"
+JWT_EXPIRATION="7d" # e.g., '1h', '7d'
+
+CLOUDINARY_CLOUD_NAME="your_cloudinary_cloud_name"
+CLOUDINARY_API_KEY="your_cloudinary_api_key"
+CLOUDINARY_API_SECRET="your_cloudinary_api_secret"
+
+# Optional: For email services (if configured)
+EMAIL_SERVICE_HOST="smtp.example.com"
+EMAIL_SERVICE_PORT=587
+EMAIL_SERVICE_USER="your_email@example.com"
+EMAIL_SERVICE_PASS="your_email_password"
+
+# Add any other specific variables you might need, e.g., for payment gateways
+# STRIPE_SECRET_KEY="sk_test_..."
+# RAZORPAY_KEY_ID="rzp_test_..."
+# RAZORPAY_KEY_SECRET="your_razorpay_secret"
+```
+
+### ▶️ Running the Application
+
+1.  **Start the Backend Server:**
+    From the project root, run:
     ```bash
-    bun dev
+    npm run dev-server
+    # Or if your package.json has a dedicated start script for backend
+    # node app.js
     ```
+    The backend will typically run on `http://localhost:8000` (or the port specified in your `.env`).
 
-2.  **Build the project for production:**
-    This will compile the project into static files in the `dist` directory, ready for deployment.
+2.  **Start the Frontend Development Server:**
+    From the project root, run:
     ```bash
-    bun run build
+    npm run dev
+    # or
+    yarn dev
     ```
+    The frontend will typically open in your browser at `http://localhost:5173` (or the port specified by Vite).
 
-3.  **Run tests:**
-    Execute the unit tests using Vitest.
-    ```bash
-    bun test
-    ```
+You should now be able to access the ChicBoutique e-commerce platform in your browser!
 
-4.  **Run E2E tests (Playwright):**
-    First, ensure you have built the project or are running the dev server, then run Playwright tests.
-    ```bash
-    bun run test-e2e
-    ```
+## 🌐 API/Backend
 
----
+The backend is built with Node.js and Express.js, providing a RESTful API for the frontend to interact with. Key API modules include:
 
-## 👋 Notes
+*   `/api/v1/auth`: User authentication, registration, login, and profile management.
+*   `/api/v1/products`: CRUD operations for product listings, categories, and subcategories.
+*   `/api/v1/cart`: Management of user shopping carts.
+*   `/api/v1/orders`: Order creation, retrieval, and status updates.
+*   `/api/v1/payments`: Handling payment processing.
+*   `/api/v1/coupons`: Coupon code management.
+*   `/api/v1/profile`: User profile updates and address management.
 
-*   This project is inferred to be a personal portfolio or tribute site, primarily based on the asset names and component structure.
-*   The `SFMD` acronym's full meaning is not explicitly provided in the repository metadata but is consistent with a personal project.
-*   The `src/components/ui` directory suggests the use of [shadcn/ui](https://ui.shadcn.com/) for its comprehensive set of customizable and accessible UI components.
+The API uses JWT for authentication and role-based middleware (`requiredLogin.middleware.js`, `roleGuard.middleware.js`) to protect routes and ensure secure access.
+
+## 🎯 Why This Project? / Use Cases
+
+*   **Fashion E-commerce Solution**: A ready-to-deploy template for businesses looking to establish an online presence for selling clothing, accessories, and other fashion items.
+*   **Learning & Development**: An excellent resource for developers wanting to learn full-stack development with the MERN stack, focusing on e-commerce functionalities.
+*   **Customization Base**: A robust foundation that can be easily customized and extended to fit specific business requirements or niche markets.
+*   **Showcase Project**: Demonstrates a wide range of modern web development practices, including state management, authentication, payment integration, and robust data handling.
+
+## 📝 Notes & Limitations
+
+*   **Inferred Details**: Specific features, technologies, and project structure details, such as the use of Zustand or Nodemailer, were inferred based on common patterns associated with the provided filenames (e.g., `authStore.js`, `authEmail.js`).
+*   **Payment Gateway**: The `payment.controllers.js` and `payment.route.js` files suggest payment integration, but the specific payment gateway (e.g., Stripe, PayPal, Razorpay) would need to be configured and tested.
+*   **Deployment**: The README covers local development. Deployment to production environments would require additional steps for hosting the frontend and backend, setting up a production database, and configuring environment variables securely.
+*   **Video Uploads**: `uploadVideo.middleware.js` indicates support for video uploads, likely via Cloudinary or similar services, which would enhance product media.
